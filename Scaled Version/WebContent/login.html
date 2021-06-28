@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Login to Fabflix</title>
+    <style>
+        body {
+            background-image: url("background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        span{
+            background: url("star.png");
+            background-size: cover;
+            animation: flash 1.3s alternate infinite;
+            position: fixed
+        }
+        @keyframes flash {
+            from {opacity: 2;}
+            to {opacity: 0;}
+        }
+        #login_panel {
+            width: 800px;
+            height: 400px;
+            position: absolute;
+            left: 49%;
+            top: 27%;
+            transform: translate(-40%,-40%);
+        }
+        #submit_button {
+            padding: 10px;
+            width: 82%;
+            border: none;
+            font-size: 25px;
+            background: mediumslateblue;
+            color: lightcyan;
+            border-radius: 15px;
+        }
+        input[type=text] {
+            border-radius: 15px;
+            border: none;
+            width: 600px;
+            padding: 15px;
+            margin: 10px;
+        }
+        input[type=password] {
+            border-radius: 15px;
+            border: none;
+            width: 600px;
+            padding: 15px;
+            margin: 10px;
+        }
+        #login_error_message {
+            color: red;
+            font-size: 35px; font-weight: bold;
+        }
+    </style>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+
+<body>
+<div id="login_panel">
+<h1 style="font-size:100px;color:lightcyan">Login to Fabflix</h1>
+
+<form id="login_form", method="post", action="#">
+    <b style="font-size:40px;color:mediumslateblue;font-style:italic">Username </b><br>
+    <input type="text" required="required" name="username" placeholder="Username"><br>
+    <b style="font-size:40px;color:mediumslateblue;font-style:italic">Password </b><br>
+    <input type="password" required="required" name="password" placeholder="Password"><br>
+    <br>
+
+    <div class="g-recaptcha" data-sitekey="6LfRacUaAAAAADQ2sQJUPKjEme7sMriE1Z0CT2TM"></div>
+    <br>
+
+    <input id="submit_button" type="submit" value="login">
+
+
+
+</form>
+</div>
+
+<div id="login_error_message"></div>
+<div id="star"></div>
+
+<!-- include jQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- include our own JS file -->
+<script src="login.js"></script>
+<script>
+    window.onload = function () {
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        let setting = ""; let left = ""; let top = ""; let shinning = "";
+        for (let i = 0; i < 50; i++) {
+            left = Math.random() * width + "" + 'px';
+            top = Math.random() * height + "" + 'px';
+            shinning = Math.random() * 3 + "" + 's';
+            setting += "<span style=\'left:"+left+";top:"+top+";height:40px;width:40px"+";animation-delay:"+shinning+"\'>" + "</span>";
+        }
+        document.getElementById("star").innerHTML = setting;
+    }
+</script>
+
+</body>
+</html>

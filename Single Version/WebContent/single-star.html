@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" content="Single Star">
+    <title>Single Star</title>
+    <style>
+        body {
+            background-image: url("background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        #Back_to_Movie_List a {
+            padding: 10px;
+            margin: 10px;
+            color: lightcyan;
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: bold;
+            background-color: mediumslateblue;
+            border-radius: 15px;
+            position: absolute;
+            top: 20px; left: 10px;
+        }
+        table {
+            width: 70%;
+            margin: auto;
+            border-collapse:separate;
+        }
+        #table_header {
+            font-size: 40px;
+            color: lightcyan;
+            font-style: italic;
+        }
+        thead th {
+            border-radius: 15px;
+            background-color: royalblue;
+        }
+        tbody td {
+            border-radius: 15px;
+            background-color: lightblue;
+            font-size: 20px;
+            opacity: 70%;
+        }
+        span{
+            background: url("star.png");
+            background-size: cover;
+            animation: flash 1.3s alternate infinite;
+            position: fixed
+        }
+        @keyframes flash {
+            from {opacity: 2;}
+            to {opacity: 0;}
+        }
+    </style>
+</head>
+
+<body>
+<h1 align=center style="font-size:100px;color:lightcyan">Single Star</h1><br>
+
+<div id="Back_to_Movie_List"><a href = "movie-list.html">Back to Movie List</a></div>
+<div id="star"></div>
+
+<table id="Single_Star">
+    <thead>
+    <tr id="table_header">
+        <th>Name</th>
+        <th>birthYear</th>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Director</th>
+        <!-- <th>Add to Shopping Cart</th> -->
+    </tr>
+    </thead>
+    <tbody id=Single_Star_Body></tbody>
+</table>
+
+<script>
+    window.onload = function () {
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        let setting = ""; let left = ""; let top = ""; let shinning = "";
+        for (let i = 0; i < 130; i++) {
+            left = Math.random() * width + "" + 'px';
+            top = Math.random() * height + "" + 'px';
+            shinning = Math.random() * 3 + "" + 's';
+            setting += "<span style=\'left:"+left+";top:"+top+";height:40px;width:40px"+";animation-delay:"+shinning+"\'>" + "</span>";
+        }
+        document.getElementById("star").innerHTML = setting;
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="single-star.js"></script>
+</body>
+
+</html>

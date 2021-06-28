@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+
+    <meta charset="utf-8">
+    <title>Payment</title>
+    <style>
+        body {
+            background-image: url("background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        #panel {
+        //background: red;
+            position: relative;
+        }
+        #content {
+        //position: absolute;
+            width: 500px;
+            height: 300px;
+            position: absolute;
+            left: 49%;
+            transform: translate(-50%, 5%);
+        }
+        input[type=text] {
+            width: 450px;
+            padding: 15px;
+            margin: 10px;
+            border: none;
+        }
+        #checkout {
+            padding: 10px;
+            width: 100%;
+            border: none;
+            font-size: 25px;
+            background: mediumslateblue;
+            color: lightcyan;
+            border-radius: 15px;
+        }
+        #checkout:hover {
+            background-color: purple;
+        }
+        .star {
+            background: url("star.png");
+            background-size: cover;
+            animation: flash 1.3s alternate infinite;
+            position: fixed
+        }
+        @keyframes flash {
+            from {opacity: 2;}
+            to {opacity: 0;}
+        }
+        #payment_error_message {
+            color: red;
+            font-size: 35px; font-weight: bold;
+        }
+        .totalprice {
+            font-size: 30px; font-weight: bold;
+            margin-left: 130px;
+            color: lightcyan; 
+        }
+        #price { font-size: 30px; color: lightcyan; font-weight: bold; }
+        #paypal{ margin-left:10px; width:130px; height: 40px; }
+        #mastercard  { margin-left:20px; width: 60px; height: 40px; }
+        #visa { margin-left:20px; width: 60px; height: 40px; }
+        #unionpay { margin-left:20px; width: 45px; height: 45px; }
+        #google { margin-left:20px; width: 100px; height: 40px; }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <a class="navbar-brand" href="#">Fabflix</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="main-page.html?numRecords=10&browseType=genre">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Browsing Type
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="main-page.html?browseType=genre">Browsing by Movie Genre</a>
+                    <a class="dropdown-item" href="main-page.html?browseType=acronym">Browsing by Movie Title</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="shopping-cart.html">Shopping Cart</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="shopping-cart.html">CheckOut</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div id="panel">
+    <div id="content">
+        <h1 style="font-size:100px;color:lightcyan;margin:30px" align="center">Payment</h1>
+
+        <span class="totalprice">Total Price is $</span><span id="price"></span><br><br>
+        
+        <form id="payment" method="post" action="#">
+            <input type="text" name="first_name" placeholder="Your First Name" required="required"><br>
+            <input type="text" name="last_name" placeholder="Your Last Name" required="required"><br>
+            <input type="text" name="card_number" placeholder="Credit Card Number" required="required"><br>
+            <input type="text" name="expire" placeholder="Expiration Date (YYYY-MM-DD)" required="required"><br><br>
+            <input id="checkout" type="submit" value="Place Order">
+            <br><br>
+            <img id='paypal' src="paypal.png"><img id='mastercard' src="mastercard.png">
+            <img id='visa' src="visa.png"><img id='unionpay' src="unionpay.png"><img id='google' src="google.png"><br>
+            <div id="payment_error_message"></div>
+        </form><br>
+        
+    </div>
+</div>
+
+<div id="star"></div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="payment.js"></script>
+
+<script>
+    window.onload = function () {
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        let setting = ""; let left = ""; let top = ""; let shinning = "";
+        for (let i = 0; i < 20; i++) {
+            left = Math.random() * width + "" + 'px';
+            top = Math.random() * height + "" + 'px';
+            shinning = Math.random() * 3 + "" + 's';
+            setting += "<span class='star' style=\'left:"+left+";top:"+top+";height:40px;width:40px"+";animation-delay:"+shinning+"\'>" + "</span>";
+        }
+        document.getElementById("star").innerHTML = setting;
+    }
+</script>
+
+</body>
+</html>

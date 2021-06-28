@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+
+
+    <style>
+        body{
+            background-image: url("background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            font-weight:bold;
+            color:gray;
+            text-align:center;
+            -webkit-font-smoothing: antialiased;
+        }
+        .box-wrap{
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin:10%;
+        }
+        .box{
+            padding:50px;
+            margin:2%;
+            background:white;
+            width:30%;
+            border:1px solid #d6d6d6;
+            box-shadow:0 2px 3px 0px rgba(0,0,0,0.25);
+            border-radius:3px;
+            transition:.2s all;
+            opacity: 70%;
+        }
+        .box-wrap:hover .box{
+            filter:blur(3px);
+            opacity:.5;
+            transform: scale(.98);
+            box-shadow:none;
+        }
+        .box-wrap:hover .box:hover{
+            transform:scale(1);
+            filter:blur(0px);
+            opacity:1;
+            box-shadow:0 8px 20px 0px rgba(0,0,0,0.125);
+        }
+        .star {
+            background: url("star.png");
+            background-size: cover;
+            animation: flash 1.3s alternate infinite;
+            position: fixed
+        }
+        @keyframes flash {
+            from {opacity: 2;}
+            to {opacity: 0;}
+        }
+
+        .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+        .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+        .autocomplete-selected { background: #F0F0F0; }
+        .autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+        .autocomplete-group { padding: 2px 5px; }
+        .autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+
+
+        .container {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .autocomplete-searchbox, .form-control {
+            height: 50px;
+            width: 80%;
+            margin-left: 10%;
+            margin-top: 2%;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class="bg-dark p-4">
+            <h4 class="text-white">Custom Search</h4>
+            <div class="row mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h5 class="font-weight-light mb-4 font-italic text-white">Default search inputs with colorful borders</h5>
+                    <div class="bg-white p-5 rounded shadow">
+
+                        <!-- Default search inputs with colorful borders -->
+                        <form action="movie-list.html" method="GET">
+                            <div class="form-group mb-4">
+                                <input type="TEXT" placeholder="Search by Title" aria-describedby="button-addon" class="autocomplete-searchbox form-control border-primary" name="title" id="autocomplete">
+                            </div>
+                            <div class="form-group mb-4">
+                                <input type="TEXT" placeholder="Search by Year" aria-describedby="button-addon" class="form-control border-info" name="year">
+                            </div>
+                            <div class="form-group mb-4">
+                                <input type="TEXT" placeholder="Search by Director" aria-describedby="button-addon" class="form-control border-warning" name="director">
+                            </div>
+                            <div class="form-group mb-4">
+                                <input type="TEXT" placeholder="Search by Star's Name" aria-describedby="button-addon" class="form-control border-success" name="starName">
+                            </div>
+                            <label for="numRecords">Number of Records:</label>
+                            <select id="numRecords" name="numRecords">
+                                <option value="10">10</option>
+                                <option value="25" selected>25</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                            </select>
+                            </select>
+                            <div class="col-md-12 text-center">
+                                <input class="btn btn-outline-primary btn-lg" TYPE="SUBMIT" VALUE="Search">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            Search
+        </button>
+    </nav>
+
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <a class="navbar-brand" href="#">Fabflix</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Browsing Type
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="main-page.html?browseType=genre">Browsing by Movie Genre</a>
+                    <a class="dropdown-item" href="main-page.html?browseType=acronym">Browsing by Movie Title</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="shopping-cart.html">Shopping Cart</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="shopping-cart.html">CheckOut</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Logout</a>
+            </li>
+            <div id="employee"></div>
+        </ul>
+    </div>
+</nav>
+
+<div id="BrowseType"></div>
+
+<div id="star"></div>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.7/jquery.autocomplete.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script src="main-page.js"></script>
+
+<script>
+    window.onload = function () {
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        let setting = ""; let left = ""; let top = ""; let shinning = "";
+        for (let i = 0; i < 50; i++) {
+            left = Math.random() * width + "" + 'px';
+            top = Math.random() * height + "" + 'px';
+            shinning = Math.random() * 3 + "" + 's';
+            setting += "<span class='star' style=\'left:"+left+";top:"+top+";height:40px;width:40px"+";animation-delay:"+shinning+"\'>" + "</span>";
+        }
+        document.getElementById("star").innerHTML = setting;
+    }
+</script>
+
+</body>
+</html>
